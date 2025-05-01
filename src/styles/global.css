@@ -1,1 +1,89 @@
 @import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --color-global: #49BB97;
+    --color-principal: #6EC1E4;
+    --color-secundario: #54595F;
+    --color-texto1: #7A7A7A;
+    --color-texto2: #000000;
+    --color-enfasis: #61CE70;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+.font-menu {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Encabezado Principal */
+.encabezado-principal {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+}
+
+/* Menú */
+.menu-texto {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 2%;
+    line-height: 18px;
+}
+
+/* Título Secundario */
+.titulo-secundario {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+}
+
+/* Cuerpo de Texto */
+.cuerpo-texto {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+}
+
+/* Énfasis */
+.enfasis {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+}
+
+/* Botones */
+.boton-texto {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 2%;
+    line-height: 16px;
+}
+
+.encabezado-principal-grande {
+    @apply font-noto text-[64px] font-bold leading-[64px];
+    color: var(--color-texto);
+}
