@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
+import Event from "../components/Event.astro";
 ---
 
 <Layout>
@@ -31,5 +32,37 @@ import Layout from "../layouts/Layout.astro";
 		>
 			Botón de prueba
 		</button>
+		<div class="flex justify-center gap-9 flex-wrap">
+			<Event
+				title="Hackathon athWorks + OAS"
+				robotImagePath="/robot.png"
+				date="6 - 22 de abril, 2025"
+				modality="Virtual"
+				description="Desafío de IA para predecir enfermedades. Premios en USD y licencias MATLAB gratis"
+				buttonText="Ver más"
+				buttonUrl="/eventos/hackathon-mathworks"
+			/>
+
+			<Event
+				title="Workshop Inteligencia Artificial"
+				robotImagePath="/icons/placeholder.png"
+				date="15 de mayo, 2025"
+				modality="Presencial"
+				description="Aprende los fundamentos de IA y crea tu primer modelo en Python. Incluye certificado."
+				buttonText="Inscribirse"
+				buttonUrl="/eventos/workshop-ia"
+				buttonColor="#4A7DFF"
+			/>
+			<Event
+				title="Workshop Inteligencia Artificial"
+				robotImagePath="/icons/placeholder.png"
+				date="15 de mayo, 2025"
+				modality="Presencial"
+				description="Aprende los fundamentos de IA y crea tu primer modelo en Python. Incluye certificado."
+				buttonText="Inscribirse"
+				buttonUrl="/eventos/workshop-ia"
+				buttonColor="#4A7DFF"
+			/>
+		</div>
 	</main>
 </Layout>

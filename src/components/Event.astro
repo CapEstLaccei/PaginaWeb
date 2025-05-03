@@ -1,0 +1,88 @@
+---
+// Event.astro
+interface Props {
+    title: string;
+    robotImagePath: string;
+    date: string;
+    modality: "Virtual" | "Presencial"; // Only these two options
+    description: string;
+    buttonText: string;
+    buttonUrl: string;
+    buttonColor?: string;
+}
+
+const {
+    title,
+    robotImagePath,
+    date,
+    modality,
+    description,
+    buttonText,
+    buttonUrl,
+    buttonColor = "#00C48E", // Default button color
+} = Astro.props;
+
+// Fixed path for calendar icon
+const calendarImagePath = "/icons/calendar.png";
+
+// Determine modality image based on modality value
+const modalityImagePath =
+    modality === "Virtual" ? "/icons/computer.png" : "/icons/profile.png";
+---
+
+<div class="bg-white rounded-xl p-5 shadow-md max-w-[280px] flex flex-col">
+    <!-- Header row with title and image -->
+    <div class="flex justify-between mb-5">
+        <h2 class="titulo-secundario flex-grow pr-2">
+            {title}
+        </h2>
+        <div class="flex-shrink-0 w-20">
+            <!-- Robot image with lightbulb -->
+            <div class="w-full">
+                <img
+                    src={robotImagePath}
+                    alt="Event illustration"
+                    class="w-full h-auto"
+                />
+            </div>
+        </div>
+    </div>
+
+    <!-- Info row with calendar and modality -->
+    <div class="space-y-3 mb-5">
+        <div class="flex items-center">
+            <!-- Calendar icon -->
+            <div class="mr-2 flex-shrink-0">
+                <img src={calendarImagePath} alt="Calendar" class="w-6 h-6" />
+            </div>
+            <span class="menu-texto mt-0.5 text-[--color-texto1]">{date}</span>
+        </div>
+
+        <div class="flex items-center">
+            <!-- Modality icon -->
+            <div class="mr-2 flex-shrink-0">
+                <img src={modalityImagePath} alt="Modality" class="w-6 h-6" />
+            </div>
+            <span class="menu-texto mt-1 text-[--color-texto1]">{modality}</span
+            >
+        </div>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-6 flex-grow">
+        <p class="cuerpo-texto text-[--color-texto2] leading-relaxed">
+            {description}
+        </p>
+    </div>
+
+    <!-- Button -->
+    <div class="w-full mt-auto">
+        <a
+            href={buttonUrl}
+            class="boton-texto inline-block text-center text-white w-full py-3 rounded-lg hover:bg-opacity-90 transition-colors"
+            style={`background-color: ${buttonColor};`}
+        >
+            {buttonText}
+        </a>
+    </div>
+</div>
