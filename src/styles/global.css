@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 :root {
     --color-global: #49BB97;
@@ -13,25 +10,33 @@
     --color-enfasis: #61CE70;
 }
 
+/* Montserrat Variable */
 @font-face {
     font-family: 'Montserrat';
-    src: url('/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+    src: url('/fonts-used/Montserrat-VariableFont_wght.ttf') format('truetype');
     font-weight: 100 900;
     font-style: normal;
     font-display: swap;
 }
 
+/* Noto Sans JP Bold */
 @font-face {
-    font-family: 'Montserrat';
-    src: url('/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
-    font-weight: 100 900;
-    font-style: italic;
+    font-family: 'Noto Sans JP';
+    src: url('/fonts-used/noto-sans-jp-103-700-normal.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
     font-display: swap;
 }
 
-.font-menu {
-    font-family: 'Montserrat', sans-serif;
+/* Noto Sans KR Regular */
+@font-face {
+    font-family: 'Noto Sans KR';
+    src: url('/fonts-used/noto-sans-kr-4-400-normal.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
+
 
 /* Encabezado Principal */
 .encabezado-principal {
@@ -84,6 +89,6 @@
 }
 
 .encabezado-principal-grande {
-    @apply font-noto text-[64px] font-bold leading-[64px];
+    @apply text-[64px] font-bold leading-[64px];
     color: var(--color-texto);
 }
