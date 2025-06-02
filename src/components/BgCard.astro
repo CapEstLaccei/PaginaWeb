@@ -14,14 +14,15 @@ const { enfasisText, title, fecha, backgroundImage, url } = Astro.props;
 
 <a
     href={url}
-    class="group block relative w-[420px] h-[280px] overflow-hidden rounded-[24px] shadow-md cursor-pointer
-         transition-transform duration-300 ease-in-out hover:scale-[1.015]"
+    class="group block relative w-full h-[200px] md:w-[420px] md:h-[280px] overflow-hidden rounded-[24px] shadow-md cursor-pointer
+    transition-transform duration-300 ease-in-out hover:scale-[1.015]"
     aria-label={`${title} · ${fecha}`}
 >
     <!-- Imagen con zoom más fuerte -->
     <div
         class="absolute inset-0 z-0 bg-center bg-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
         style={`background-image: url('${backgroundImage}');`}
+        transition:name="BgCard_Image"
     >
     </div>
 

@@ -7,7 +7,7 @@ const { image, title } = Astro.props;
 ---
 
 <div
-    class="flex flex-col items-center text-center w-[412px] rounded-[24px] p-5 shadow-md"
+    class="flex flex-col items-center text-center w-full max-w-[412px] rounded-[24px] p-5 shadow-md"
     style="background-color: var(--color-secundario);"
 >
     <img src={image} alt={title} class="w-[180px] h-[180px] object-contain" />
