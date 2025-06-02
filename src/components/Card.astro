@@ -1,0 +1,60 @@
+---
+import "../styles/global.css";
+
+interface Props {
+    /** Texto de la parte superior en énfasis */
+    enfasisText: string;
+    /** Título secundario de la card */
+    title: string;
+    /** Texto del cuerpo de la card */
+    cuerpoTexto: string;
+    /** Texto que aparecerá dentro del botón (si existe) */
+    buttonText?: string;
+    /** URL a la que apunta el botón (si existe) */
+    buttonUrl?: string;
+    /** Controla si se debe renderizar el botón o no (opcional, por defecto true) */
+    showButton?: boolean;
+}
+
+const {
+    enfasisText,
+    title,
+    cuerpoTexto,
+    buttonText = "Clic aquí", // Valor por defecto
+    buttonUrl = "#", // Valor por defecto
+    showButton = true, // Por defecto renderizamos el botón
+} = Astro.props;
+---
+
+<div class="bg-[#F0EEE6] rounded-xl shadow-md p-5 flex flex-col w-[420px]">
+    <!-- Línea de "énfasis" -->
+    <span class="enfasis text-[--color-texto2]">
+        {enfasisText}
+    </span>
+
+    <!-- Título secundario -->
+    <h2 class="titulo-secundario text-[--color-texto2] mt-2">
+        {title}
+    </h2>
+
+    <!-- Texto del cuerpo (sin flex-grow para que el contenedor crezca solo si es necesario) -->
+    <p class="cuerpo-texto text-[--color-texto2] mt-2">
+        {cuerpoTexto}
+    </p>
+
+    <!-- Botón opcional -->
+    {
+        showButton && (
+            <a
+                href={buttonUrl}
+                class="boton-texto block text-center mt-4 py-3 rounded-lg"
+                style="
+        background-color: var(--color-global);
+        color: #FFFFFF;
+      "
+            >
+                {buttonText}
+            </a>
+        )
+    }
+</div>
