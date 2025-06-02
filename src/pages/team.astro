@@ -1,0 +1,26 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const title = "Nombre del Evento o Título";
+const date = "2 de junio de 2025";
+const body = `Este es el cuerpo del texto. Aquí podés contar detalles sobre el evento, la actividad realizada, o cualquier información relevante para este post. Podés extenderlo varias líneas si querés.`;
+---
+
+<Layout>
+    <!-- Imagen de portada -->
+    <div
+        class="bg-center h-80 bg-cover w-full"
+        style={`background-image: url('/assets/foto-grupal.jpeg');  background-position: center 45%`}
+        transition:name="BgCard_Image"
+    >
+    </div>
+
+    <!-- Contenido del post -->
+    <div class="max-w-3xl mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">{title}</h1>
+        <p class="text-sm text-gray-500 mb-6">{date}</p>
+        <div class="text-base text-gray-800 whitespace-pre-line">
+            {body}
+        </div>
+    </div>
+</Layout>
