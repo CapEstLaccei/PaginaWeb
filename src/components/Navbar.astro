@@ -2,38 +2,54 @@
     class="h-[88px] w-full flex items-center justify-between px-4"
     style="padding-right: 16px"
 >
-    <!-- Logo -->
     <img src="/assets/LACCEILogo.png" alt="Logo LACCEI" class="h-16 w-auto" />
 
-    <!-- Menú -->
     <ul
-        class="flex items-center space-x-[22px] font-menu font-medium text-[18px] tracking-[0.02em] text-[var(--color-texto2)]"
+        class="flex items-center space-x-[22px]
+        font-['Montserrat'] /* Aplicamos la fuente directamente aquí */
+        font-medium
+        tracking-[0.02em]
+        text-[var(--color-texto2)]"
     >
         <li>
             <a
                 href="#novedades"
-                class="hover:text-[var(--color-texto1)] transition-colors duration-200"
+                class="hover:text-[var(--color-texto1)] transition-colors duration-200
+                text-sm
+                md:text-[18px]"
                 >Novedades</a
             >
         </li>
         <li>
             <a
-                href="#proyectos"
-                class="hover:text-[var(--color-texto1)] transition-colors duration-200"
+                href="
+                #proyectos"
+                class="hover:text-[var(--color-texto1)] transition-colors duration-200
+                text-sm
+                md:text-[18px]"
                 >Proyectos</a
             >
         </li>
         <li>
             <a
-                href="#contacto"
-                class="hover:text-[var(--color-texto1)] transition-colors duration-200"
+                href="
+                #contacto"
+                class="hover:text-[var(--color-texto1)] transition-colors duration-200
+                text-sm
+                md:text-[18px]"
                 >Contacto</a
             >
         </li>
         <li>
             <a
-                href="#unete"
-                class="w-[112px] h-[40px] px-[22px] flex items-center justify-center rounded-md text-white font-menu transition-colors duration-200"
+                href="
+                #unete"
+                class="w-[112px] h-[40px] px-[22px] flex items-center justify-center rounded-md text-white
+                font-['Montserrat']
+                font-medium
+                text-sm
+                md:text-[18px]
+                transition-colors duration-200"
                 style="background-color: var(--color-global);"
                 onmouseover="this.style.backgroundColor='var(--color-enfasis)';"
                 onmouseout="this.style.backgroundColor='var(--color-global)';"
