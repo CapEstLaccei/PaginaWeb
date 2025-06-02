@@ -1,0 +1,93 @@
+---
+import { ChevronRight } from "lucide-astro";
+
+interface Props {
+    id: string; // ahora se recibe un id único
+    icon: any;
+    question: string;
+    answer?: any;
+}
+const { id, icon: Icon, question, answer } = Astro.props;
+---
+
+<style>
+    /* Igual que antes */
+    .answer {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition:
+            max-height 0.4s ease,
+            opacity 0.3s ease 0.1s,
+            transform 0.3s ease 0.1s;
+    }
+    .answer.open {
+        max-height: 1000px;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .faq-card {
+        cursor: pointer;
+    }
+    .question-row {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    .icon {
+        color: var(--color-global);
+        font-size: 1.5rem;
+        flex-shrink: 0;
+    }
+    h3 {
+        font-weight: 600;
+        font-size: 1.125rem;
+        margin: 0;
+    }
+    .arrow {
+        margin-left: auto;
+        color: var(--color-global);
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+    }
+    .faq-card.open .arrow {
+        transform: rotate(90deg);
+    }
+</style>
+
+<div
+    class="border rounded-xl p-4 pb-2 space-y-2 shadow-sm bg-white mb-6 faq-card"
+    id={id}
+>
+    <div class="question-row">
+        <div class="icon"><Icon /></div>
+        <h3>{question}</h3>
+        <ChevronRight class="arrow" size={20} />
+    </div>
+    <div class="text-sm text-gray-600 answer mb-2">
+        {answer ?? <slot />}
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const faqsSection = document.getElementById("faqs");
+        if (!faqsSection) return; // protejo si no existe el contenedor
+
+        faqsSection.addEventListener("click", (e) => {
+            // e.target puede ser cualquier nodo, aseguro que tenga closest
+            const target = e.target;
+            if (!(target instanceof Element)) return;
+
+            const card = target.closest(".faq-card");
+            if (!card) return;
+
+            const answer = card.querySelector(".answer");
+            if (!answer) return;
+
+            answer.classList.toggle("open");
+            card.classList.toggle("open");
+        });
+    });
+</script>
