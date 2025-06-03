@@ -37,6 +37,11 @@
     font-display: swap;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+
 
 /* Encabezado Principal */
 .encabezado-principal {
