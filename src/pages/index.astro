@@ -113,30 +113,74 @@ import {
 			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 				<div>
 </div>
-<div class="border-b-1 border-gray-300 mb-8">
-               <SimpleCard
-                  image="/assets/hackathon.png"
-                  title="Hackatón Virtual LACCEI 2025"
-                />
-               <a
-                  href="https://laccei.org/laccei2025/hackathon-virtual/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                   <button style={{ marginTop: '10px', padding: '10px 20px', backgroundColor: '#0070f3', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
-                   Ir al sitio del Hackatón
-                   </button>
-               </a>
+<div className="event-container border-b-1 border-gray-300 mb-8">
+  <div className="event">
+    <SimpleCard
+      image="/assets/hackathon.png"
+      title="Hackatón Virtual LACCEI 2025"
+    />
+    <a
+      href="https://laccei.org/laccei2025/hackathon-virtual/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <button className="event-button">Ir al sitio del Hackatón</button>
+    </a>
+  </div>
 
-				<SimpleCard
-					image="/assets/LACCEILogo.png"
-					title="Proyectos con impacto"
-				/>
-				<SimpleCard
-					image="/assets/LACCEILogo.png"
-					title="Redes de colaboración"
-				/>
-			</div>
+  <div className="event">
+    <SimpleCard
+      image="/assets/LACCEILogo.png"
+      title="Proyectos con impacto"
+    />
+    <a
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <button className="event-button">Más información</button>
+    </a>
+  </div>
+
+  <div className="event">
+    <SimpleCard
+      image="/assets/LACCEILogo.png"
+      title="Redes de colaboración"
+    />
+    <a
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <button className="event-button">Ver detalles</button>
+    </a>
+  </div>
+</div>
+.event-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.event {
+  text-align: center;
+}
+
+.event-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.event-button:hover {
+  background-color: #0056b3;
+}
+
 		</section>
 		<section id="faqs" class="py-16 px-4 md:px-12">
 			<div class="border-b-1 border-gray-300 mb-8">
