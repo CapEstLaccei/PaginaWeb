@@ -133,11 +133,7 @@ import {
       image="/assets/LACCEILogo.png"
       title="Proyectos con impacto"
     />
-    <a
-      href="#"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+    <a href="#" target="_blank" rel="noopener noreferrer">
       <button className="event-button">Más información</button>
     </a>
   </div>
@@ -147,19 +143,16 @@ import {
       image="/assets/LACCEILogo.png"
       title="Redes de colaboración"
     />
-    <a
-      href="#"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+    <a href="#" target="_blank" rel="noopener noreferrer">
       <button className="event-button">Ver detalles</button>
     </a>
   </div>
 </div>
 .event-container {
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  justify-content: space-between; /* Distribuye los eventos en línea */
+  gap: 20px; /* Espacio entre los eventos */
+  align-items: center; /* Asegura alineación vertical */
 }
 
 .event {
@@ -180,6 +173,7 @@ import {
 .event-button:hover {
   background-color: #0056b3;
 }
+
 
 		</section>
 		<section id="faqs" class="py-16 px-4 md:px-12">
