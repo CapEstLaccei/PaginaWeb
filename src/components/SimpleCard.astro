@@ -2,16 +2,43 @@
 export interface Props {
     image: string;
     title: string;
+    href?: string;
+    imgWidth?: string;
+    imgHeight?: string;
+    objectFit?: "cover" | "contain" | "fill" | "none" | "scale-down";
 }
-const { image, title } = Astro.props;
+
+const { image, title, href, imgWidth, imgHeight, objectFit } = Astro.props;
+
+const imgStyle = {
+    width: imgWidth ?? "180px",
+    height: imgHeight ?? "180px",
+    objectFit: objectFit ?? "contain",
+};
 ---
 
-<div
-    class="flex flex-col items-center text-center w-full max-w-[412px] rounded-[24px] p-5 shadow-md"
-    style="background-color: var(--color-secundario);"
->
-    <img src={image} alt={title} class="w-[180px] h-[180px] object-contain" />
-    <h3 class="text-[24px] leading-tight font-extrabold my-6">
-        {title}
-    </h3>
-</div>
+{
+    href ? (
+        <a href={href} target="_blank" rel="noopener noreferrer">
+            <div
+                class="flex flex-col items-center text-center w-full max-w-[412px] rounded-[24px] p-5 shadow-md"
+                style="background-color: var(--color-secundario);"
+            >
+                <img src={image} alt={title} style={imgStyle} />
+                <h3 class="text-[24px] leading-tight font-extrabold my-6">
+                    {title}
+                </h3>
+            </div>
+        </a>
+    ) : (
+        <div
+            class="flex flex-col items-center text-center w-full max-w-[412px] rounded-[24px] p-5 shadow-md"
+            style="background-color: var(--color-secundario);"
+        >
+            <img src={image} alt={title} style={imgStyle} />
+            <h3 class="text-[24px] leading-tight font-extrabold my-6">
+                {title}
+            </h3>
+        </div>
+    )
+}
