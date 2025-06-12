@@ -1,0 +1,89 @@
+---
+import Instagram from "../components/icons/Instagram.astro";
+import Mail from "../components/icons/Mail.astro";
+import Phone from "../components/icons/Phone.astro";
+import Send from "../components/icons/Send.astro";
+---
+
+<section class="w-full px-4 md:px-6 py-16 bg-white border-t border-gray-300">
+    <div class="border-b border-gray-300">
+        <h2 class="text-3xl font-bold encabezado-principal mb-4">Contacto</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 pt-6">
+        <div class="space-y-6 text-[var(--color-texto2)] cuerpo-texto">
+            <div class="flex items-center gap-4 border-b border-gray-300 h-16">
+                <Instagram class="w-8 h-8" />
+                <span class="font-bold-extra">@InstagramLaccei</span>
+            </div>
+            <div class="flex items-center gap-4 border-b border-gray-300 h-16">
+                <Mail class="w-8 h-8" />
+                <a href="mailto:sandbox17201@gmail.com" class="font-bold-extra">
+                    cap_est_laccei@frd.utn. .ar
+                </a>
+            </div>
+            <div class="flex items-center gap-4">
+                <Phone class="w-8 h-8" />
+                <span class="font-bold-extra">+54 1234552190</span>
+            </div>
+        </div>
+
+        <form
+            action="https://formsubmit.co/sandbox17201@gmail.com"
+            method="POST"
+            class="bg-[var(--color-secundario)] rounded-[24px] p-4 md:p-6 grid grid-cols-1 sm:grid-cols-2 gap-4"
+        >
+            <!-- Opcional: desactivar captcha y redirigir -->
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="http://localhost:4321/" />
+
+            <div class="sm:col-span-1">
+                <label class="block text-sm font-semibold mb-1">Nombre</label>
+                <input
+                    type="text"
+                    name="nombre"
+                    required
+                    class="w-full p-2 rounded bg-white border border-gray-300 focus:outline-none"
+                />
+            </div>
+            <div class="sm:col-span-1">
+                <label class="block text-sm font-semibold mb-1">Apellido</label>
+                <input
+                    type="text"
+                    name="apellido"
+                    required
+                    class="w-full p-2 rounded bg-white border border-gray-300 focus:outline-none"
+                />
+            </div>
+            <div class="sm:col-span-2">
+                <label class="block text-sm font-semibold mb-1">Email</label>
+                <input
+                    type="email"
+                    name="email"
+                    required
+                    class="w-full p-2 rounded bg-white border border-gray-300 focus:outline-none"
+                />
+            </div>
+            <div class="sm:col-span-2">
+                <label class="block text-sm font-semibold mb-1">Mensaje</label>
+                <textarea
+                    name="mensaje"
+                    required
+                    rows="4"
+                    class="w-full p-2 rounded bg-white border border-gray-300 focus:outline-none resize-none"
+                ></textarea>
+            </div>
+            <div class="sm:col-span-2 flex justify-end">
+                <button
+                    type="submit"
+                    class="bg-[var(--color-global)] hover:bg-[var(--color-enfasis)] text-white p-3 rounded-full transition-colors"
+                >
+                    <Send
+                        class="w-6 h-6 inline-block"
+                        style="margin-left: -1.6px;"
+                    />
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
