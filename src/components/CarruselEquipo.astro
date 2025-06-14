@@ -1,5 +1,21 @@
 ---
 import './carrusel.css';
+
+const personas = [
+  { src: 'assets/UserEj.png', alt: 'Candela' },
+  { src: 'assets/UserEj.png', alt: 'Magalí' },
+  { src: 'assets/UserEj.png', alt: 'Amparo' },
+  { src: 'assets/UserEj.png', alt: 'Gustavo' },
+  { src: 'assets/UserEj.png', alt: 'Hanna' },
+  { src: 'assets/UserEj.png', alt: 'Jose Pablo' },
+  { src: 'assets/UserEj.png', alt: 'Leandro' },
+  { src: 'assets/UserEj.png', alt: 'Magali' },
+  { src: 'assets/UserEj.png', alt: 'Matina' },
+  { src: 'assets/UserEj.png', alt: 'Tatiana' },
+  { src: 'assets/UserEj.png', alt: 'Victoria' },
+  { src: 'assets/UserEj.png', alt: 'Lara' },
+  { src: 'assets/UserEj.png', alt: 'Lautaro' },
+];
 ---
 
 <div class="carrusel contenedor">
@@ -13,20 +29,7 @@ import './carrusel.css';
     </button>
     <div class="contenedor-carousel">
       <div class="carousel" id="carousel">
-        {[
-          { src: 'assets/UserEj.png', alt: 'Candela' },
-          { src: 'assets/UserEj.png', alt: 'Magalí' },
-          { src: 'assets/UserEj.png', alt: 'Amparo' },
-          { src: 'assets/UserEj.png', alt: 'Gustavo' },
-          { src: 'assets/UserEj.png', alt: 'Hanna' },
-          { src: 'assets/UserEj.png', alt: 'Jose Pablo' },
-          { src: 'assets/UserEj.png', alt: 'Leandro' },
-          { src: 'assets/UserEj.png', alt: 'Magali' },
-          { src: 'assets/UserEj.png', alt: 'Matina' },
-          { src: 'assets/UserEj.png', alt: 'Tatiana' },
-          { src: 'assets/UserEj.png', alt: 'Victoria' },
-          { src: 'assets/UserEj.png', alt: 'Lara' },
-                 ].map(persona => (
+        {personas.map((persona) => (
           <div class="miembro">
             <a href="#"><img src={`/${persona.src}`} alt={persona.alt} /></a>
           </div>
@@ -34,9 +37,4 @@ import './carrusel.css';
       </div>
     </div>
     <button role="button" id="flecha-derecha" class="flecha-derecha">
-      <i class="fas fa-angle-right"></i>
-    </button>
-  </div>
-</div>
-
-<script type="module" src="/scripts/carrusel.js"></script>
+      <i
