@@ -2,10 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import CarruselEquipo from "../components/CarruselEquipo.astro";
 
-
-const title = "Nombre del Evento o Título";
+const title = "Equipo LACCEI 2025";
 const date = "2 de junio de 2025";
-const body = `Este es el cuerpo del texto. Aquí podés contar detalles sobre el evento, la actividad realizada, o cualquier información relevante para este post. Podés extenderlo varias líneas si querés.`;
+const body = `El equipo LACCEI 2025 está conformado por estudiantes de la carrera de Ingeniería en Sistemas de Información de la UTN Facultad Regional Delta, junto a la docente Ing. Karen Villalba, quien acompaña y coordina al grupo`;
 ---
 
 <Layout>
@@ -24,11 +23,6 @@ const body = `Este es el cuerpo del texto. Aquí podés contar detalles sobre el
         <div class="text-base text-gray-800 whitespace-pre-line">
             {body}
         </div>
+        <CarruselEquipo />
     </div>
-
-    
-    <!-- Carrusel del equipo -->
-    <CarruselEquipo/>
-
-
 </Layout>

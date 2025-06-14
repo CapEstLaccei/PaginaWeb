@@ -1,40 +1,141 @@
 ---
-import './carrusel.css';
-
 const personas = [
-  { src: 'assets/UserEj.png', alt: 'Candela' },
-  { src: 'assets/UserEj.png', alt: 'Magalí' },
-  { src: 'assets/UserEj.png', alt: 'Amparo' },
-  { src: 'assets/UserEj.png', alt: 'Gustavo' },
-  { src: 'assets/UserEj.png', alt: 'Hanna' },
-  { src: 'assets/UserEj.png', alt: 'Jose Pablo' },
-  { src: 'assets/UserEj.png', alt: 'Leandro' },
-  { src: 'assets/UserEj.png', alt: 'Magali' },
-  { src: 'assets/UserEj.png', alt: 'Matina' },
-  { src: 'assets/UserEj.png', alt: 'Tatiana' },
-  { src: 'assets/UserEj.png', alt: 'Victoria' },
-  { src: 'assets/UserEj.png', alt: 'Lara' },
-  { src: 'assets/UserEj.png', alt: 'Lautaro' },
+  { src: "assets/UserEj.png", alt: "Candela" },
+  { src: "assets/UserEj.png", alt: "Magalí" },
+  { src: "assets/UserEj.png", alt: "Amparo" },
+  { src: "assets/UserEj.png", alt: "Gustavo" },
+  { src: "assets/UserEj.png", alt: "Hanna" },
+  { src: "assets/UserEj.png", alt: "Jose Pablo" },
+  { src: "assets/UserEj.png", alt: "Leandro" },
+  { src: "assets/UserEj.png", alt: "Magali" },
+  { src: "assets/UserEj.png", alt: "Matina" },
+  { src: "assets/UserEj.png", alt: "Tatiana" },
+  { src: "assets/UserEj.png", alt: "Victoria" },
+  { src: "assets/UserEj.png", alt: "Lara" },
+  { src: "assets/UserEj.png", alt: "Lautaro" },
 ];
 ---
 
-<div class="carrusel contenedor">
-  <div class="contenedor-titulo-controles">
-    <h3>Team</h3>
-    <div class="indicadores"></div>
-  </div>
-  <div class="contenedor-principal">
-    <button role="button" id="flecha-izquierda" class="flecha-izquierda">
-      <i class="fas fa-angle-left"></i>
-    </button>
-    <div class="contenedor-carousel">
-      <div class="carousel" id="carousel">
-        {personas.map((persona) => (
+<div class="carrusel max-w-3xl">
+  <h3 class="titulo">Equipo LACCEI 2025</h3>
+  <div class="marquee">
+    <div class="marquee-content">
+      {
+        personas.concat(personas).map((persona, index) => (
           <div class="miembro">
-            <a href="#"><img src={`/${persona.src}`} alt={persona.alt} /></a>
+            <img src={`/${persona.src}`} alt={persona.alt} />
+            <p>{persona.alt}</p>
           </div>
-        ))}
-      </div>
+        ))
+      }
     </div>
-    <button role="button" id="flecha-derecha" class="flecha-derecha">
-      <i
+  </div>
+</div>
+
+<style>
+  .carrusel {
+    width: 100%;
+    overflow: hidden;
+    background: white;
+    padding: 2rem 1rem;
+  }
+
+  .titulo {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .marquee {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .marquee-content {
+    display: flex;
+    gap: 2rem;
+    animation: scroll-marquee 30s linear infinite;
+  }
+
+  .miembro {
+    flex: 0 0 auto;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+
+  .miembro img {
+    margin-top: 0.5rem;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ccc;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .miembro:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    border-color: #888;
+  }
+
+  .miembro:hover p {
+    transform: scale(1.1);
+  }
+
+  .miembro p {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #333;
+    transition: transform 0.3s ease;
+  }
+
+  @keyframes scroll-marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .marquee {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  /* Los pseudo-elementos crean el efecto de difuminado */
+  .marquee::before,
+  .marquee::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 3rem;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .marquee::before {
+    left: 0;
+    background: linear-gradient(to right, white 0%, transparent 100%);
+  }
+
+  .marquee::after {
+    right: 0;
+    background: linear-gradient(to left, white 0%, transparent 100%);
+  }
+
+  /* Asegurate que el contenido vaya debajo del fade */
+  .marquee-content {
+    display: flex;
+    gap: 2rem;
+    animation: scroll-marquee 30s linear infinite;
+    z-index: 1;
+    position: relative;
+  }
+</style>
