@@ -188,6 +188,7 @@ import News from "../components/News.astro";
 			</FaqCard>
 
 			<FaqCard
+			
 				id="faq-6"
 				icon={ScrollText}
 				question="¿Recibo algún tipo de reconocimiento?"
@@ -239,3 +240,18 @@ import News from "../components/News.astro";
 		<Form />
 	</main>
 </Layout>
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animación para el título principal
+    gsap.from("h1", {
+        y: 20,
+        opacity: 0,
+        duration: 1.5,
+        ease: "power2.out",
+    });
+
+</script>
