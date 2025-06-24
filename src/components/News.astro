@@ -1,0 +1,114 @@
+---
+interface Frontmatter {
+    date: string;
+    title: string;
+    summary: string;
+    img: string; //Name of the image 
+}
+
+interface NewsArticle {
+    frontmatter: Frontmatter;
+    url: string;
+}
+
+const modules = import.meta.glob<{
+    frontmatter: Frontmatter;
+}>("/src/content/news/*.md", { eager: true });
+
+const newsArticles: NewsArticle[] = Object.entries(modules)
+    .map(([path, mod]) => ({
+        frontmatter: mod.frontmatter,
+        url: `/news/${path.split('/').pop()?.replace('.md', '')}`, // ajusta según tu routing
+    }))
+    .sort(
+        (a, b) =>
+            new Date(b.frontmatter.date).getTime() -
+            new Date(a.frontmatter.date).getTime(),
+    );
+// Ordenar por fecha descendente
+---
+
+<section id="news">
+    <h2>Latest News</h2>
+    <div class="news-carousel">
+        {
+            newsArticles.map((article) => (
+                <div class="news-card">
+                    <div
+                        class="bg-center h-80 bg-cover w-full"
+                        style={`background-image: url('/assets/${article.frontmatter.img}'); background-position: center 45%`}
+                        transition:name={article.frontmatter.title}
+                    ></div>              
+                    <h3>{article.frontmatter.title}</h3>
+                    <p>{article.frontmatter.summary}</p>
+                    <a href={article.url}>Read more</a>
+                </div>
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    #news {
+        padding: 2rem;
+        background-color: #f9f9f9;
+    }
+
+    #news h2 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .news-carousel {
+        display: flex;
+        overflow-x: auto;
+        gap: 1rem;
+        padding: 1rem;
+        scroll-snap-type: x mandatory;
+    }
+
+    .news-card {
+        flex: 0 0 auto;
+        width: 300px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        scroll-snap-align: start;
+    }
+
+    .news-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .news-card p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        color: #555;
+    }
+
+    .news-card a {
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+    }
+
+    .news-card a:hover {
+        text-decoration: underline;
+    }
+
+    .news-carousel::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .news-carousel::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 4px;
+    }
+
+    .news-carousel::-webkit-scrollbar-thumb:hover {
+        background: #aaa;
+    }
+</style>
