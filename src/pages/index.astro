@@ -290,4 +290,19 @@ cards.forEach((card, i) => {
   });
 });
 
+gsap.fromTo("#logo-nut",
+      { rotation: -10, transformOrigin: "50% 50%" },
+      {
+        rotation: 10,
+        duration: 1,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: 1,     // gira ida y vuelta una vez
+        scrollTrigger: {
+          trigger: "footer",
+          start: "top bottom",
+          toggleActions: "play none none none",
+        }
+      }
+    );
 </script>
