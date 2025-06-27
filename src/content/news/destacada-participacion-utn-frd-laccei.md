@@ -1,0 +1,18 @@
+---
+title: "Destacada participación de la UTN FRD en LACCEI"
+date: 2025-06-14
+author: "UTN FRD"
+tags: ["LACCEI", "UTN FRD", "Innovación", "Educación", "STEM"]
+summary: "La UTN Facultad Regional Delta se destacó en el BOOTCAM estudiantil de LACCEI 2024, en la presentación de un trabajo de investigación, y en el liderazgo regional de su decano, consolidando su reputación en el ámbito académico y tecnológico internacional."
+img: "bootcamp2025.jpg"
+---
+
+La UTN Facultad Regional Delta continúa consolidando su reputación en el ámbito académico y tecnológico internacional, gracias a la destacada participación de sus estudiantes en eventos de gran relevancia. Este año, ha sido excelentemente representada en el BOOTCAM estudiantil de LACCEI 2024, en la presentación de un trabajo de investigación en el 22nd LACCEI liderado por una de sus docentes, y en el liderazgo regional de su decano a través de su significativa participación en toda la conferencia.
+
+Es un gran orgullo para la UTN FRD anunciar la sobresaliente participación de estudiantes de la carrera de Ingeniería en Sistemas de Información en el BOOTCAM de LACCEI 2024, una competencia que desafía a jóvenes talentos a desarrollar soluciones innovadoras para problemas actuales. En este contexto, Lautaro Ezequiel Figueredo se alzó con el primer lugar, mientras que Victoria Jaquelina Ojeda obtuvo el tercer puesto. Mayra Eluney Gomez Faure y Sofia Cuba también demostraron un excelente desempeño y una dedicación admirable, elevando el prestigio de nuestra institución.
+
+Asimismo, la docente Ing. Karen Villalba destacó contribuyendo significativamente al éxito del equipo de la Facultad, desde la convocatoria y acompañamiento en este desafiante evento, siendo testigo del compromiso estudiantil y las habilidades desarrolladas en esta experiencia.
+
+Paralelamente, otro grupo de estudiantes de la UTN FRD presentó con éxito un trabajo de investigación titulado “Computational Thinking at the High School Level as a Strategy to Stimulate Female Vocational Interest in Engineering Careers.” Este proyecto, también dirigido por la Ing. Karen Villalba, en el que participaron Magalí Acosta, Franco Hilt y Victoria Jaquelina Ojeda, exploró cómo el pensamiento computacional en la educación secundaria puede incentivar el interés vocacional de las mujeres en las carreras de ingeniería. La presentación de este trabajo no solo representa un avance significativo en la investigación educativa, sino que también subraya el compromiso de nuestra facultad con la promoción de la igualdad de género en las áreas STEM.
+
+Estos logros no habrían sido posibles sin la influencia y el apoyo de nuestro decano, el Ing. Miguel Sosa, quien actualmente es presidente de la Cátedra Abierta Latinoamericana de Desarrollo Tecnológico y Transferencia (DT2) de LACCEI. Su liderazgo ha sido fundamental para que la UTN FRD continúe siendo un referente en innovación tecnológica y educativa a nivel regional. La participación activa del ingeniero Sosa en LACCEI no solo enriquece nuestras iniciativas, sino que también abre nuevas oportunidades para que nuestros estudiantes sigan destacándose en escenarios internacionales. Asimismo, reflejan el compromiso de la UTN FRD con la formación de profesionales altamente capacitados y comprometidos con la innovación, el desarrollo tecnológico y la sostenibilidad. Continuaremos apoyando a cada estudiante en su camino hacia la excelencia, fomentando la investigación y la participación en eventos internacionales que les permitan desarrollarse plenamente y contribuir al progreso de la sociedad.

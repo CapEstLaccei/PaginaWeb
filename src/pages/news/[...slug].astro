@@ -1,0 +1,35 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+export const getStaticPaths = (async () => {
+    const posts = await getCollection("news");
+    return posts.map((post) => ({ params: { slug: post.slug }, props: post }));
+}) satisfies GetStaticPaths;
+const post = Astro.props;
+
+const { Content } = await post.render(); // Renderiza el Markdown
+
+const { title, date, img } = post.data;
+---
+
+
+
+<Layout>
+    <!-- Imagen de portada -->
+    <div
+        class="bg-center h-80 bg-cover w-full"
+        style={`background-image: url('/assets/${img}'); background-position: center 45%`}
+        transition:name={title}
+    >
+    </div>
+
+    <!-- Contenido del post -->
+    <div class="max-w-3xl mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">{title}</h1>
+        <p class="text-sm text-gray-500 mb-6">{date}</p>
+        <div class="text-base text-gray-800 whitespace-pre-line">
+            <Content />
+        </div>
+    </div>
+</Layout>

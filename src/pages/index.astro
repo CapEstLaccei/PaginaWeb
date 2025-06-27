@@ -20,6 +20,7 @@ import FileText from "../components/icons/FileText.astro";
 import LineChart from "../components/icons/LineChart.astro";
 
 import Form from "../components/Form.astro";
+import News from "../components/News.astro";
 ---
 
 <Layout>
@@ -90,7 +91,7 @@ import Form from "../components/Form.astro";
 			<div
 				class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start px-0 md:px-6"
 			>
-				<h2 class="text-4xl font-bold text-left leading-tight">
+				<h2 id="hero-second-title" class="text-4xl font-bold text-left leading-tight">
 					¿Qué es LACCEI?
 				</h2>
 				<div class="space-y-4 text-lg text-justify">
@@ -132,6 +133,8 @@ import Form from "../components/Form.astro";
 				/>
 			</div>
 		</section>
+		<News />
+		
 		<section id="faqs" class="py-16 px-4 md:px-12">
 			<div class="border-b-1 border-gray-300 mb-8">
 				<h2 class="text-3xl font-bold encabezado-principal mb-4">
@@ -185,6 +188,7 @@ import Form from "../components/Form.astro";
 			</FaqCard>
 
 			<FaqCard
+			
 				id="faq-6"
 				icon={ScrollText}
 				question="¿Recibo algún tipo de reconocimiento?"
@@ -236,4 +240,71 @@ import Form from "../components/Form.astro";
 		<Form />
 	</main>
 </Layout>
-	
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animación para el título principal
+    gsap.from("h1", {
+        y: 20,
+        opacity: 0,
+        duration: 1.5,
+        ease: "power2.out",	
+    });
+
+	gsap.from("#hero-second-title", {
+  	scrollTrigger: {
+    trigger: "#hero-second-title",    // elemento que dispara
+    start: "top 60%",                  // cuando el top del elemento alcance el 80% de la ventana
+    toggleActions: "play none none none", // play al entrar, nada más
+	},
+	y: 20,
+	opacity: 0,
+	duration: 1.5,
+	ease: "power2.out",
+	});
+
+	const cards = gsap.utils.toArray<HTMLElement>(".simple-card");
+
+cards.forEach((card, i) => {
+  // Defino direcciones: primera desde izquierda, segunda desde abajo, tercera desde derecha
+  const fromVars = [
+	{ x: -100, y: 0 },
+	{ x: 0, y: 100 },
+	{ x: 100, y: 0 },
+  ][i % 3];
+
+  gsap.from(card, {
+	scrollTrigger: {
+	  trigger: card,
+	  start: "top 80%",
+	  toggleActions: "play none none none",
+	},
+	...fromVars,           // x ó y según índice
+	scale: 0.8,            // ligero pop
+	opacity: 0,
+	duration: 1,
+	ease: "back.out(1.7)", // rebote suave
+  });
+});
+
+gsap.fromTo("#logo-nut",
+      { rotation: -10, transformOrigin: "50% 50%" },
+      {
+        rotation: 10,
+        duration: 1,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: 1,     // gira ida y vuelta una vez
+        scrollTrigger: {
+          trigger: "footer",
+          start: "top bottom",
+          toggleActions: "play none none none",
+        }
+      }
+    );
+</script>
+
