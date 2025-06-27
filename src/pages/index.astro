@@ -91,7 +91,7 @@ import News from "../components/News.astro";
 			<div
 				class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start px-0 md:px-6"
 			>
-				<h2 class="text-4xl font-bold text-left leading-tight">
+				<h2 id="hero-second-title" class="text-4xl font-bold text-left leading-tight">
 					¿Qué es LACCEI?
 				</h2>
 				<div class="space-y-4 text-lg text-justify">
@@ -251,7 +251,43 @@ import News from "../components/News.astro";
         y: 20,
         opacity: 0,
         duration: 1.5,
-        ease: "power2.out",
+        ease: "power2.out",	
     });
+
+	gsap.from("#hero-second-title", {
+  	scrollTrigger: {
+    trigger: "#hero-second-title",    // elemento que dispara
+    start: "top 60%",                  // cuando el top del elemento alcance el 80% de la ventana
+    toggleActions: "play none none none", // play al entrar, nada más
+	},
+	y: 20,
+	opacity: 0,
+	duration: 1.5,
+	ease: "power2.out",
+	});
+
+	const cards = gsap.utils.toArray<HTMLElement>(".simple-card");
+
+cards.forEach((card, i) => {
+  // Defino direcciones: primera desde izquierda, segunda desde abajo, tercera desde derecha
+  const fromVars = [
+	{ x: -100, y: 0 },
+	{ x: 0, y: 100 },
+	{ x: 100, y: 0 },
+  ][i % 3];
+
+  gsap.from(card, {
+	scrollTrigger: {
+	  trigger: card,
+	  start: "top 80%",
+	  toggleActions: "play none none none",
+	},
+	...fromVars,           // x ó y según índice
+	scale: 0.8,            // ligero pop
+	opacity: 0,
+	duration: 1,
+	ease: "back.out(1.7)", // rebote suave
+  });
+});
 
 </script>
