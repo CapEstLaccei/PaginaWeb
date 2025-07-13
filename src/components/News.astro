@@ -1,114 +1,223 @@
 ---
 interface Frontmatter {
-    date: string;
-    title: string;
-    summary: string;
-    img: string; //Name of the image 
+  date: string;
+  title: string;
+  summary: string;
+  img: string;
+  //Name of the image
 }
 
 interface NewsArticle {
-    frontmatter: Frontmatter;
-    url: string;
+  frontmatter: Frontmatter;
+  url: string;
 }
 
-const modules = import.meta.glob<{
-    frontmatter: Frontmatter;
-}>("/src/content/news/*.md", { eager: true });
+const modules = import.meta.glob<{ frontmatter: Frontmatter; }>("/src/content/news/*.md", {
+  eager: true
+});
 
 const newsArticles: NewsArticle[] = Object.entries(modules)
-    .map(([path, mod]) => ({
-        frontmatter: mod.frontmatter,
-        url: `/news/${path.split('/').pop()?.replace('.md', '')}`, // ajusta según tu routing
-    }))
-    .sort(
-        (a, b) =>
-            new Date(b.frontmatter.date).getTime() -
-            new Date(a.frontmatter.date).getTime(),
-    );
-// Ordenar por fecha descendente
+  .map(([path, mod]) => ({
+    frontmatter: mod.frontmatter,
+    url: `/news/${path.split('/').pop()?.replace('.md', '')}`, // ajusta según tu routing
+  }))
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime(),
+  ); // Ordenar por fecha descendente
+
+// Función para formatear la fecha
+function formatDate(dateString: string) {
+  const date = new Date(dateString);
+  const day = date.getDate();
+  const month = date.toLocaleDateString('es-ES', { month: 'long' });
+  const year = date.getFullYear();
+  return `${day} de ${month}, ${year}`;
+}
 ---
 
-<section id="news">
-    <h2>Latest News</h2>
-    <div class="news-carousel">
-        {
-            newsArticles.map((article) => (
-                <div class="news-card">
-                    <div
-                        class="bg-center h-80 bg-cover w-full"
-                        style={`background-image: url('/assets/${article.frontmatter.img}'); background-position: center 45%`}
-                        transition:name={article.frontmatter.title}
-                    ></div>              
-                    <h3>{article.frontmatter.title}</h3>
-                    <p>{article.frontmatter.summary}</p>
-                    <a href={article.url}>Read more</a>
-                </div>
-            ))
-        }
-    </div>
+<section id="news" class="py-8 bg-gray-50">
+  <h2 class="text-center text-2xl font-bold mb-6">Latest News</h2>
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex overflow-hidden gap-6 snap-x snap-mandatory pb-4 scrollbar-hide"
+         style="scroll-padding-left: 50%; scroll-snap-type: x mandatory;"
+    >
+    {newsArticles.map((article) => (
+      <div class="news-card flex-none w-80 bg-white rounded-3xl p-4 shadow-md snap-start first:ml-auto last:mr-auto">
+        <!-- Grid Container -->
+        <div class="news-grid h-full">
+          <!-- Título (grid-area: title) -->
+          <div class="news-title">
+            <h2 class="text-xl font-bold text-texto2 leading-tight">
+              {article.frontmatter.title}
+            </h2>
+          </div>
+
+          <!-- Imagen (grid-area: image) -->
+          <div class="news-image">
+            <img
+              src={`/assets/${article.frontmatter.img}`}
+              alt={article.frontmatter.title}
+              class="size-12 object-cover rounded"
+              transition:name={article.frontmatter.title}
+            />
+          </div>
+
+          <!-- Icono Grande + Fecha y Modalidad (grid-area: info) -->
+          <div class="news-info">
+            <svg class="w-10 h-10 text-global flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+            </svg>
+            <div class="ml-3 flex flex-col">
+              <p class="text-base text-texto2">
+                {formatDate(article.frontmatter.date)}
+              </p>
+              <span class="text-base text-texto2 mt-1">Virtual</span>
+            </div>
+          </div>
+
+          <!-- Descripción (grid-area: description) -->
+          <div class="news-description">
+            <p class="text-base text-texto2 leading-5">
+              {article.frontmatter.summary}
+            </p>
+          </div>
+
+          <!-- Botón (grid-area: button) -->
+          <div class="news-button">
+            <a 
+              href={article.url}
+              class="w-full h-10 bg-global rounded-lg text-white text-base flex items-center justify-center hover:opacity-90 transition-opacity font-medium"
+            >
+              Ver más
+            </a>
+          </div>
+        </div>
+      </div>
+    ))}
+      </div>
+  </div>
 </section>
 
 <style>
-    #news {
-        padding: 2rem;
-        background-color: #f9f9f9;
-    }
+  /* Configuración de variables CSS custom para Tailwind */
+  :root {
+    --color-global: #49BB97;
+    --color-principal: #6EC1E4;
+    --color-secundario: #ECECEC;
+    --color-texto1: #7A7A7A;
+    --color-texto2: #000000;
+    --color-enfasis: #61CE70;
+  }
 
-    #news h2 {
-        text-align: center;
-        margin-bottom: 1.5rem;
-    }
+  /* Clases personalizadas para las variables */
+  .bg-global { background-color: var(--color-global); }
+  .bg-principal { background-color: var(--color-principal); }
+  .bg-secundario { background-color: var(--color-secundario); }
+  .text-global { color: var(--color-global); }
+  .text-principal { color: var(--color-principal); }
+  .text-secundario { color: var(--color-secundario); }
+  .text-texto1 { color: var(--color-texto1); }
+  .text-texto2 { color: var(--color-texto2); }
+  .text-enfasis { color: var(--color-enfasis); }
 
-    .news-carousel {
-        display: flex;
-        overflow-x: auto;
-        gap: 1rem;
-        padding: 1rem;
-        scroll-snap-type: x mandatory;
-    }
+  /* Grid Layout para las cards */
+  .news-card {
+    min-height: 360px; /* Altura mínima fija para todas las cards */
+    max-height: 360px; /* Altura máxima fija para todas las cards */
+  }
 
-    .news-card {
-        flex: 0 0 auto;
-        width: 300px;
-        background: white;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 1rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        scroll-snap-align: start;
-    }
+  .news-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas: 
+      "title image"
+      "info info"
+      "description description"
+      "button button";
+    gap: 12px;
+    height: 100%;
+  }
 
-    .news-card h3 {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-    }
+  .news-title {
+    grid-area: title;
+    display: flex;
+    align-items: flex-start;
+  }
 
-    .news-card p {
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
-        color: #555;
-    }
+  .news-image {
+    grid-area: image;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
 
-    .news-card a {
-        text-decoration: none;
-        color: #007bff;
-        font-weight: bold;
-    }
+  .news-info {
+    grid-area: info;
+    display: flex;
+    align-items: flex-start;
+  }
 
-    .news-card a:hover {
-        text-decoration: underline;
-    }
+  .news-description {
+    grid-area: description;
+    display: flex;
+    align-items: flex-start;
+    overflow: hidden;
+  }
 
-    .news-carousel::-webkit-scrollbar {
-        height: 8px;
-    }
+  .news-description p {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-    .news-carousel::-webkit-scrollbar-thumb {
-        background: #ccc;
-        border-radius: 4px;
-    }
+  .news-button {
+    grid-area: button;
+    display: flex;
+    align-items: flex-end;
+    align-self: end;
+    margin-top: auto;
+  }
 
-    .news-carousel::-webkit-scrollbar-thumb:hover {
-        background: #aaa;
+  /* Estilos para el carousel centrado */
+  #news .flex {
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  /* Centrar las primeras 3 cards */
+  #news .flex > div:nth-child(1) {
+    margin-left: calc((100vw - 1200px) / 2);
+  }
+  
+  @media (max-width: 1200px) {
+    #news .flex > div:nth-child(1) {
+      margin-left: calc((100vw - 320px * 3 - 48px) / 2);
     }
+  }
+  
+  @media (max-width: 1024px) {
+    #news .flex > div:nth-child(1) {
+      margin-left: calc((100vw - 320px * 2 - 24px) / 2);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    #news .flex > div:nth-child(1) {
+      margin-left: 1rem;
+    }
+  }
+
+  /* Ocultar scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+  }
 </style>

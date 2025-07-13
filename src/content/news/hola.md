@@ -3,7 +3,7 @@ title: "Nueva noticia"
 date: 2025-06-22
 author: "Autor"
 tags: ["Etiqueta1", "Etiqueta2"]
-summary: "ResResumen breve de la noticiaResumen breve de la noticiaResumen breve de la noticiaumen breve de la noticia."
+summary: "Lorem Hola me llamo Gustavo Lorem Hola me llamo Gustavo  Lorem Hola me llamo Gustavo  Lorem Hola me llamo Gustavo "
 img: "Hackathon.png"
 ---
 
